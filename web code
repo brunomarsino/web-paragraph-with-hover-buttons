@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design and Research</title>
+    <style>
+        @font-face {
+            font-family: 'HelveticaLight';
+            src: url('path-to-your-helvetica-light.woff2') format('woff2'),
+                 url('path-to-your-helvetica-light.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'HelveticaLight', 'Helvetica Neue', Helvetica, sans-serif;
+            line-height: 1.3em;
+            margin: 0;
+            padding: 0;
+            font-weight: 300;
+            text-align: left;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+        .container {
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            position: relative;
+        }
+        h6.title {
+            font-family: 'HelveticaLight', 'Helvetica Neue', Helvetica, sans-serif;
+            font-size: 24px;
+            margin: 0;
+            margin-bottom: 9px; /* Bottom space as requested */
+            padding: 0;
+            font-weight: 300;
+            line-height: 1.1em; /* Reduced line height to reduce space above title */
+        }
+        .circle-button {
+            display: inline-block;
+            width: 31px;
+            height: 19px;
+            line-height: 19px;
+            border-radius: 9px;
+            border: 1px solid black;
+            text-align: center;
+            margin-right: 5px; /* Reduced space between button and text */
+            font-size: 14px;
+            vertical-align: middle;
+            font-family: 'HelveticaLight', 'Helvetica Neue', Helvetica, sans-serif;
+            background-color: white;
+            color: black;
+            transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+            position: relative;
+            font-weight: 300;
+        }
+        .circle-button:hover {
+            background-color: black;
+            color: white;
+        }
+        .circle-button img,
+        .circle-button video {
+            opacity: 0;
+            width: 141px;
+            height: 141px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.17);
+            z-index: 10;
+            pointer-events: none;
+            transition: opacity 0.4s ease-in-out; /* Only fade-in effect */
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%); /* Centered without movement */
+        }
+        p {
+            margin: 0;
+            margin-bottom: 20px; /* Space between paragraphs */
+            word-wrap: break-word;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.3em;
+        }
+        .italic {
+            font-style: italic;
+        }
+        .inline-button {
+            margin-left: 3px; /* Slightly reduced space between button and text */
+            margin-right: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h6 class="title">DESIGN</h6>
+    <p><span class="circle-button" data-id="1">01<img src="https://static.wixstatic.com/media/b11944_e27bda9bbd2148daa6c358947c90f514~mv2.jpg" alt="Image 1"></span> Jean’s visionary style, characterized by intricate details and fantastical motifs, is exquisitely rendered through Judson Studios' unparalleled expertise in stained and fused glass techniques.</p>
+    <p><span class="italic">Pagoda</span>'s design blends global architectural motifs, eastern and western religious iconography, and timeless mythological themes. A traditional <span class="italic">Pagoda</span> <span class="circle-button inline-button" data-id="2">02<img src="https://static.wixstatic.com/media/b11944_c020e2943804426cbb3a9899afd5ad97~mv2.jpg" alt="Image 2"></span> commonly consists of five stories, each representing the five primary elements: fire, water, wood, metal, and earth.</p>
+    
+    <p>Utilizing the geometry of the pentagonal hexacontahedron, the artwork conceptually deconstructs the tower into an interlocking array of five-sided panels <span class="circle-button inline-button" data-id="3">03<img src="https://static.wixstatic.com/media/b11944_5edf6ec1cdd04dd18e01b69c5b46d65c~mv2.jpg" alt="Image 3"></span>. The radiant dome recalls both an ancient yurt and the futuristic forms of Buckminster Fuller.</p>
+    
+    <p>Five lyrically-rendered primary characters inhabit the structure’s vibrantly colored surfaces, enacting an ethereal narrative of seeking, growth, and decay.</p>
+    
+    <h6 class="title">RESEARCH</h6>
+    <p>Years in the making, <span class="italic">Pagoda</span>’s innovative load-bearing glass shell structure represents a monumental research and development initiative.</p>
+    
+    <p>The project required an in-depth exploration of both traditional and modern techniques, ensuring that the complex design could be realized without compromising its artistic integrity <span class="circle-button inline-button" data-id="4">04<video src="https://video.wixstatic.com/video/b11944_13a45dfd7ff3422081e2b54d70be7d98/720p/mp4/file.mp4" alt="Video 04" autoplay loop muted></video></span>. The structure’s glazed glass area covers 680 square feet, highlighting the vast scale of the undertaking.</p>
+
+    <h6 class="title">DEVELOPMENT</h6>
+    <p><span class="italic">Pagoda</span> is the ambitious culmination of a dynamic, four-year partnership between James Jean and Judson Studios. This partnership integrated traditional stained glass fabrication methods with powerful digital modeling programs, precise waterjet cutting systems, and pioneering fused art glass techniques.</p>
+</div>
+
+<script>
+    document.querySelectorAll('.circle-button').forEach(button => {
+        const media = button.querySelector('img, video');
+
+        button.addEventListener('mouseenter', () => {
+            media.style.opacity = "1"; // Ensure media fades in when hovering over the button
+        });
+
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = (e.clientX - rect.left - rect.width / 2) * -0.05; // Subtle following effect
+            const y = (e.clientY - rect.top - rect.height / 2) * -0.05; // Subtle following effect
+
+            media.style.transform = `translate(${x}px, ${y}px)`; // Media follows the cursor
+        });
+
+        button.addEventListener('mouseleave', () => {
+            media.style.opacity = "0"; // Ensure media fades out when leaving the button
+            setTimeout(() => {
+                media.style.transform = 'translateX(-50%)'; // Reset to center after fade-out
+            }, 400); // 400ms matches the duration of the fade-out
+        });
+    });
+</script>
+
+</body>
+</html>
